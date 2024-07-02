@@ -10,7 +10,7 @@ app.get("/api/hello", (req, res)=>{
   const visitorName = req.query.visitor_name || "Mark";
   // const forwarded = req.headers['x-forwarded-for'];
   // const ip = forwarded ? forwarded.split(/, /)[0] : req.socket.remoteAddress;
-  const ip = req.ip;
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
   // console.log(ip);
 
