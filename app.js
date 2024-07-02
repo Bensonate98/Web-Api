@@ -13,7 +13,7 @@ app.get("/api/hello", (req, res)=>{
   let temp = null;
     //Get location data
 const getLocation = ()=>{
-  return fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_FctlM4bUga9PByPjV0vusCyVDmXvD&ipAddress=8.8.8.8`)
+  return fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_FctlM4bUga9PByPjV0vusCyVDmXvD&ipAddress=${ip}`)
   .then(res=>res.json())
   .then(data=>{
     const city = data.location.region;
