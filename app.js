@@ -8,7 +8,9 @@ const app = express();
 
 app.get("/api/hello", (req, res)=>{
   const visitorName = req.query.visitor_name || "Mark";
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress; // Updated to use req.socket
+  const forwarded = req.headers['x-forwarded-for'];
+  const ip = forwarded ? forwarded.split(/, /)[0] : req.socket.remoteAddress;
+
   // console.log(ip);
 
   let location = null;
